@@ -63,6 +63,10 @@ To run this project, execute below commands.
       $ cd InfraAsCodeWithTerraformAndAnsible
   
     ```
+  * Set default region
+    ```
+    export AWS_DEFAULT_REGION=us-east-1
+    ```
   * initialize terraform
     ```
       $ terraform init  
