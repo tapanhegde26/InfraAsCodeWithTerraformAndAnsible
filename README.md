@@ -41,18 +41,20 @@ Project is created with:
 
 ## Usage
 * Files used in this project with their functionality listed
-  * Files/httpd.conf.j2 :- Template file for apache(httpd) server config
-  * Files/info.php.j2 :- Template file for sample info.php
-  * vars/default.yml :- contains variables, which references are used in main ansible yml file
-  * ansible.cfg :- config file for ansible
-  * aws.tf :- This file contains cloud provider details for terraform
-  * ec2.tf :- This file contains details for ec2 instance creation
-  * install_mediawiki.sh :- bash script to install mediawiki in created ec2 instance, this script is invoked in ansible playbook command
-  * install_module.sh :- bash script to reset/enable php modules in ec2 instance
-  * output.tf :- This file will have public ip of ec2 instance once creation is success.
-  * vars.tf :- This file contains variables for terraform
-  * vpc.tf :- This file contains network details for ec2 instance
-
+  * ansible/Files/httpd.conf.j2 :- Template file for apache(httpd) server config
+  * ansible/Files/info.php.j2 :- Template file for sample info.php
+  * ansible/vars/default.yml :- contains variables, which references are used in main ansible yml file
+  * ansible/ansible.cfg :- config file for ansible
+  * terraform/aws.tf :- This file contains cloud provider details for terraform
+  * terraform/ec2.tf :- This file contains details for ec2 instance creation
+  * ansible/install_mediawiki.sh :- bash script to install mediawiki in created ec2 instance, this script is invoked in ansible playbook command
+  * ansible/install_module.sh :- bash script to reset/enable php modules in ec2 instance
+  * terraform/output.tf :- This file will have public ip of ec2 instance once creation is success.
+  * terraform/vars.tf :- This file contains variables for terraform
+  * terraform/vpc.tf :- This file contains network details for ec2 instance
+  * createInfra.sh :- This script contains terraform commands to create EC2 infra in aws
+  * destroyInfra.sh :- This script contains terraform commands to destroy EC2 infra in aws
+  
 To run this project, execute below commands.
   * clone this project
     ```
@@ -63,19 +65,27 @@ To run this project, execute below commands.
       $ cd InfraAsCodeWithTerraformAndAnsible
   
     ```
-  * Set default region
+  * execute createInfra script
     ```
-    export AWS_DEFAULT_REGION=us-east-1
+      $ chmod +x createInfra.sh
+      $ ./createInfra.sh
     ```
-  * initialize terraform
-    ```
-      $ terraform init  
-    ```
-  * execute terraform apply with private/public key path
-    ```
-      $ terraform apply -var "pvt_key=~/.ssh/id_rsa" -var "pub_key=~/.ssh/id_rsa.pub"
-    ``` 
-  here i am considering path for ssh keys would be /home/user/.ssh path, you can generate and keep ssh keys in any path and make sure you use same path while running terraform apply commmand
+ 
+ ### Notes:
+   * Here i am considering path for ssh keys would be /home/user/.ssh path, you can generate and keep ssh keys in any path and make sure you use same path while running terraform apply commmand
+   * I am considering us-east-1 as default region, same has been set in createInfra.sh and destroyInfra.sh scripts. Please feel free to change it according to your feasibility.
+
+## output
+When createInfra.sh executes successfully, you will get similar below message on console.
+```
+address = "http://54.159.90.179/mediawiki/mediawiki-1.36.1/index.php/Main_Page"
+ssh = "ssh ec2-user@54.159.90.179"
+Infra created
+```
+try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.1/index.php/Main_Page
+* Eg : http://54.159.90.179/mediawiki/mediawiki-1.36.1/index.php/Main_Page
+* you should see setup mediawiki page as below
+    ![alt text](https://github.com/sheldon-cooper26/InfraAsCodeWithTerraformAndAnsible/blob/main/image.png?raw=true)
   
 ## Project status
     In-progress
