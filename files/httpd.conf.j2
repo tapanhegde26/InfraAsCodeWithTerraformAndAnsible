@@ -1,0 +1,6 @@
+<VirtualHost *:{{ http_port }}>
+    DocumentRoot "/var/www/{{ http_host }}/"
+    ServerName {{ http_host }}
+    CustomLog /var/log/httpd/{{ http_host }}_access.log combined
+    ErrorLog /var/log/httpd/{{ http_host }}.com_error.log
+</VirtualHost>

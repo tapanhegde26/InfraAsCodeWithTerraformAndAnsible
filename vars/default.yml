@@ -1,0 +1,24 @@
+---
+mysql_root_password: "mysql12345"
+wiki_user_password: "mediawiki12345"
+app_user: "ec2-user"
+http_host: "ec2-3-90-1-20.compute-1.amazonaws.com"
+http_conf: "ec2user.conf"
+http_port: "80"
+http_folder: "httpd"
+disable_default: true
+php_module_name: "php"
+php_version: "7.4"
+php_desired_repo: "remi"
+php_desired_stream: "{{ php_desired_repo }}-{{ php_version }}"
+php_packages:
+  - php-devel
+  - php-pdo
+  - php-cli
+  - php-opcache
+fusioninventory__agent_packages:
+  - 'fusioninventory-agent'
+  - 'fusioninventory-agent-task-inventory'
+fusioninventory__repo_package: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+fusioninventory__repo_gpgkey: "https://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+
