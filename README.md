@@ -124,11 +124,11 @@ This project can be improved in below areas.
 
 
 ## Credits & References
-https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management
-https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started
-https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
-https://www.linuxtechi.com/install-mediawiki-on-linux/
-https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux
+* https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management
+* https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started
+* https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
+* https://www.linuxtechi.com/install-mediawiki-on-linux/
+* https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux
   
 
 
