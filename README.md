@@ -120,6 +120,7 @@ This project can be improved in below areas.
 * For now this project is tested only for AWS cloud, it can be extended to other cloud providers like GCP, Azure, Digital Ocean etc
 
 * For now this project is tested with RHEL-8 ami image, it can fine tuned to use other linux flavours like ubuntu, amazon linux, suse etc.
+* mediawiki site is running on http protocol(not secure) by default, we can make necessary changes at httpd web server level to make it secure(https)
 
 
 ## Credits & References
