@@ -1,7 +1,21 @@
 # InfrastructureAsCode With Terraform And Ansible
 In this repo, I tried to develop infrastructure on aws with help of terraform and then tried to achieve configuration management using ansible
 
-## Details :
+## Table of contents
+* [Details](#details)
+* [Technologies](#technologies)
+* [Operating-System](#operating-system)
+* [Pre-requisite](#pre-requisite)
+* [Set-up](#set-up)
+* [Usage](#usage)
+  * [Notes](#notes)
+* [output](#output)
+* [Project-status](#project-status)
+* [Future-improvement](#future-improvement)
+* [Challenges](#challenges)
+* [Credits&References](#credits&references)
+
+## Details
 This repository sets up:
 
 * A VPC
@@ -87,13 +101,16 @@ try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.
 * you should see setup mediawiki page as below
     ![alt text](https://github.com/sheldon-cooper26/InfraAsCodeWithTerraformAndAnsible/blob/main/image.png?raw=true)
   
-## Project status
+## Project-status
     In-progress
     
-## Room for improvment
+## Challenges
+* with this automation I was only able to install mediawiki in ec2-instance. But, complete setup requires manual intervention, like we need to set language, add db details for wiki manually by following web instructions. Need to find a way to automate this, so that complete installation+configuration suite can be automated.
+
+## Future-improvment
 This project can be improved in below areas.
 * Ansible variables handling :
-    * I am planning to upgrade this project by using ansible vault to store db credentials in encrypted format
+    * I am working to upgrade this project by using ansible vault to store db credentials in encrypted format
 
 * Terraform file declaration :
     * Modules can be created and these module templates can be used in main.tf which is used ec2-instance creation.
@@ -103,6 +120,14 @@ This project can be improved in below areas.
 * For now this project is tested only for AWS cloud, it can be extended to other cloud providers like GCP, Azure, Digital Ocean etc
 
 * For now this project is tested with RHEL-8 ami image, it can fine tuned to use other linux flavours like ubuntu, amazon linux, suse etc.
+
+
+## Credits & References
+https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management
+https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started
+https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
+https://www.linuxtechi.com/install-mediawiki-on-linux/
+https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux
   
 
 
