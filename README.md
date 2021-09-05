@@ -53,6 +53,8 @@ Project is created with:
    * Terraform : 
       * Download Terraform :- https://www.terraform.io/downloads.html
       * Install Terraform :- https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
+   * Ansible : Install ansible on host machine
+      * https://linuxconfig.org/install-ansible-on-redhat-8
 * Set up AWS credentials in ~/.aws/credentials.
    * The easiest way to do so is by setting up the AWS CLI. 
       * https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
