@@ -17,12 +17,6 @@
          owner: "{{ app_user }}"
          mode: '0755'
 
-    # - name: Set up Apache virtualhost
-    #   template:
-    #     src: "files/httpd.conf.j2"
-    #     dest: "/etc/httpd/conf/{{ http_conf }}"
-    #   notify: Reload Apache
-
     - name: install firewalld
       dnf:
         name: firewalld
@@ -61,8 +55,6 @@
         dest: "/var/www/html/index.html"
         content: |
             "Welcome to this site!"
-
-
     - name: create directory for virtual hosts
       template:
         src: "files/httpd.conf.j2"
@@ -73,14 +65,6 @@
       file:
         path: /var/www/{{http_host}}
         state: directory
-
-    #
-    # - name: Change file ownership, group and permissions
-    #   ansible.builtin.file:
-    #     path: /var/www/html
-    #     owner: apache
-    #     group: apache
-    #     mode: '0644'
 
     - name: Make sure a mariadb service unit is running
       ansible.builtin.systemd:
@@ -109,19 +93,6 @@
         password: '{{ mysql_root_password }}'
         state: present
 
-
-# Php7.4 Configuration
-
-    # - name: Add repository epel
-    #   dnf:
-    #    name: 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm'
-    #    state: present
-
-    # - name: Add repository remi
-    #   dnf:
-    #    name: 'https://rpms.remirepo.net/enterprise/remi-release-8.rpm'
-    #    state: present
-
     - name: Import EPEL GPG key
       rpm_key:
         key: "{{ fusioninventory__repo_gpgkey }}"
@@ -136,50 +107,6 @@
       dnf:
         name: dnf-utils
         state: present
-
-    # - block:
-    #   - name: "Retrieve remote php module file"
-    #     fetch:
-    #      src: "/etc/dnf/modules.d/{{ php_module_name }}.module"
-    #      dest: /tmp/ansible
-    #     changed_when: false
-    #
-    # - name: "Read stream from {{ php_module_name }} module"
-    #   set_fact:
-    #     current_stream: "{{ lookup( 'ini', 'stream section={{ php_module_name }} file=/tmp/ansible/{{ inventory_hostname }}/etc/dnf/modules.d/{{ php_module_name }}.module' ) }}"
-    #
-    # - name: "Remove existing {{ php_module_name }}"
-    #   dnf:
-    #     name: "{{ php_module_name }}"
-    #     state: absent
-    #   when: current_stream != php_desired_stream
-    #
-    # - name: reset {{ php_module_name }} module
-    #   command: "dnf module reset -y {{ php_module_name }}"
-    #   args:
-    #     warn: false
-    #   when:
-    #    - current_stream != php_desired_stream
-    #
-    # - name: "Enable {{ php_module_name }}:{{ php_desired_stream }} module"
-    #   command: "dnf module enable -y {{ php_module_name }}:{{ php_desired_stream }}"
-    #   args:
-    #     warn: false
-    #   register: dnf_module_php_enabled
-    #   when: current_stream != php_desired_stream
-    #
-    # - name: Install {{ php_module_name }} {{ php_version }} from {{ php_desired_stream }}
-    #   dnf:
-    #     enablerepo: "{{ php_desired_repo }}"
-    #     name: "@{{ php_module_name }}:{{ php_desired_stream }}"
-    #     state: present
-    #   when: dnf_module_php_enabled
-    #
-    # - name: Installing additional PHP packages
-    #   dnf:
-    #     name: "{{ php_packages }}"
-    #     update_cache: yes
-    #   when: current_stream != php_desired_stream
 
     #Install php Configuration
     - name: Install PhP Packages
@@ -214,7 +141,6 @@
         content: |
             "<?php
               phpinfo();?>"
-
     - name: Transfer the script
       copy: src=install_module.sh dest=/home/ec2-user mode=0777
 
@@ -245,14 +171,6 @@
     - name: Execute the script
       command: sh /home/ec2-user/install_mediawiki.sh
 
-
-#   - name: Copy LoclaSetting.php file with owner and permissions
-#     ansible.builtin.copy:
-#        src: /home/ubuntu/ansible-playbooks/lamp_ubuntu1804/LocalSettings.php
-#        dest: /var/www/html/mediawiki
-#        owner: apache
-#        group: apache
-#        mode: '0664'
 
   handlers:
     - name: Reload Apache
