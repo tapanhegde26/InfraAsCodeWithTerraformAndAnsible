@@ -47,6 +47,7 @@ Project is created with:
 
 ## set-up
 * Git needs to be installed in host machine
+   * https://linuxconfig.org/install-git-in-linux-redhat-8
 * Install Python3, Terraform, Ansible locally.
    * Python3 : https://linuxconcept.com/how-to-install-python-3-on-rhel-8-red-hat-enterprise-linux/
    * Terraform : https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
