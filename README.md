@@ -66,6 +66,8 @@ Project is created with:
       - AWS Secret Access Key [None] : ******
       - Default region name : [leave it none , press enter]
       - Default output format : [leave it none, press enter]
+* Generate ssh keys for your host machine and save it under path '/home/[user]/.ssh'
+   * https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-rhel-8/
 
 ## Usage
 * Files used in this project with their functionality listed
