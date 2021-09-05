@@ -127,8 +127,12 @@ try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.
 
 ## Future-improvement
 This project can be improved in below areas.
-* Ansible variables handling :
-    * I am working to upgrade this project by using ansible vault to store db credentials in encrypted format
+* Ansible variables handling 
+    * I am working to upgrade this project by using ansible vault to store db credentials in encrypted format [completed]
+        * encrypted vars/default.yml file using anisble-vault. please find below command to execute ansible playbook using vault password file
+            ```
+            ansible-playbook  mediawiki-successInstall-1draft.yml  -l server1 -u ec2-user --vault-password-file ~/.vault
+            ```
 
 * Terraform file declaration :
     * Modules can be created and these module templates can be used in main.tf which is used ec2-instance creation.
