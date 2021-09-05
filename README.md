@@ -105,7 +105,7 @@ try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.
     In-progress
     
 ## Challenges
-* with this automation I was only able to install mediawiki in ec2-instance. But, complete setup requires manual intervention, like we need to set language, add db details for wiki manually by following web instructions. Need to find a way to automate this, so that complete installation+configuration suite can be automated.
+* with this automation I was only able to install mediawiki in ec2-instance. But, complete setup requires manual intervention, like we need to set language, add database details for wiki manually by following web instructions. Need to find a way to automate this, so that complete installation+configuration suite can be automated.
 
 ## Future-improvment
 This project can be improved in below areas.
