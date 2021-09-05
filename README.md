@@ -33,7 +33,7 @@ Following contents will be deployed/installed in instance
 ## Technologies
 Project is created with:
 * AWS
-* Ansible: 2.9
+* Ansible: 2.9.25
 * Terraform: 1.0.5
 
 ## Operating-System
@@ -43,22 +43,22 @@ Project is created with:
 * An AWS Account
 * An AWS CLI needs to be installed
 * Your AWS credentials. 
-  * You can create a new Access Key on this page.https://console.aws.amazon.com/iam/home?#/security_credentials
+  * You can create a new Access Key on this page.[link](https://console.aws.amazon.com/iam/home?#/security_credentials)
 
 ## Set-up
 * Git needs to be installed in host machine
    * git : https://linuxconfig.org/install-git-in-linux-redhat-8
 * Install Python3, Terraform, Ansible locally.
-   * Python3 : https://linuxconcept.com/how-to-install-python-3-on-rhel-8-red-hat-enterprise-linux/
+   * [Python3 installation](https://linuxconcept.com/how-to-install-python-3-on-rhel-8-red-hat-enterprise-linux/)
    * Terraform : 
-      * Download Terraform :- https://www.terraform.io/downloads.html
-      * Install Terraform :- https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
+      * [Download Terraform](https://www.terraform.io/downloads.html)
+      * [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
    * Ansible : Install ansible on host machine
-      * https://linuxconfig.org/install-ansible-on-redhat-8
+      * [Ansible installation](https://linuxhint.com/install_configure_ansible_rhel8/)
 * Set up AWS credentials in ~/.aws/credentials.
    * The easiest way to do so is by setting up the AWS CLI. 
-      * https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
-      * https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+      * [Install CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+      * [Install CLI on linux](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html)
 * once aws-cli is installed in host machine, set up aws credentials using below command
    ```
    $ aws configure
@@ -69,7 +69,7 @@ Project is created with:
       - Default region name : [leave it none , press enter]
       - Default output format : [leave it none, press enter]
 * Generate ssh keys for your host machine and save it under path '/home/[user]/.ssh'
-   * https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-rhel-8/
+   * [Link to generate ssh keys](https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-rhel-8/)
 
 ## Usage
 * Files used in this project with their functionality listed
@@ -142,11 +142,11 @@ This project can be improved in below areas.
 
 
 ## References
-* https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management
-* https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started
-* https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
-* https://www.linuxtechi.com/install-mediawiki-on-linux/
-* https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux
+* [how to use ansible with terraform on Digital ocean](https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management)
+* [hasicorp tutorials](https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started)
+* [Ansible documentation](https://docs.ansible.com/ansible/2.3/list_of_all_modules.html)
+* [install mediawiki on linux](https://www.linuxtechi.com/install-mediawiki-on-linux/)
+* [mediakwiki manual](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux)
   
 
 
