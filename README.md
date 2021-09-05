@@ -108,7 +108,7 @@ try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.
 ## Challenges
 * with this automation I was only able to install mediawiki in ec2-instance. But, complete setup requires manual intervention, like we need to set language, add database details for wiki manually by following web instructions. Need to find a way to automate this, so that complete installation+configuration suite can be automated.
 
-## Future-improvment
+## Future-improvement
 This project can be improved in below areas.
 * Ansible variables handling :
     * I am working to upgrade this project by using ansible vault to store db credentials in encrypted format
@@ -124,7 +124,7 @@ This project can be improved in below areas.
 * mediawiki site is running on http protocol(not secure) by default, we can make necessary changes at httpd web server level to make it secure(https)
 
 
-## Credits & References
+## Credits-&-References
 * https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management
 * https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started
 * https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
