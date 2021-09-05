@@ -13,7 +13,7 @@ In this repo, I tried to develop infrastructure on aws with help of terraform an
 * [Project-status](#project-status)
 * [Future-improvement](#future-improvement)
 * [Challenges](#challenges)
-* [Credits&References](#credits&references)
+* [Credits-&-References](#credits-&-references)
 
 ## Details
 This repository sets up:
