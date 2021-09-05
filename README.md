@@ -50,7 +50,9 @@ Project is created with:
    * git : https://linuxconfig.org/install-git-in-linux-redhat-8
 * Install Python3, Terraform, Ansible locally.
    * Python3 : https://linuxconcept.com/how-to-install-python-3-on-rhel-8-red-hat-enterprise-linux/
-   * Terraform : https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
+   * Terraform : 
+      * Download Terraform :- https://www.terraform.io/downloads.html
+      * Install Terraform :- https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
    * Ansible : https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-20-04
 * Set up AWS credentials in ~/.aws/credentials.
    * The easiest way to do so is by setting up the AWS CLI. https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
