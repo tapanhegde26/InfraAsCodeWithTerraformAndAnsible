@@ -13,7 +13,7 @@ In this repo, I tried to develop infrastructure on aws with help of terraform an
 * [Project-status](#project-status)
 * [Future-improvement](#future-improvement)
 * [Challenges](#challenges)
-* [Credits-&-References](#credits-&-references)
+* [References](#references)
 
 ## Details
 This repository sets up:
@@ -124,7 +124,7 @@ This project can be improved in below areas.
 * mediawiki site is running on http protocol(not secure) by default, we can make necessary changes at httpd web server level to make it secure(https)
 
 
-## Credits-&-References
+## References
 * https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management
 * https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started
 * https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
