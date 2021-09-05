@@ -110,9 +110,9 @@ To run this project, execute below commands.
 ## output
 When createInfra.sh executes successfully, you will get similar below message on console.
 ```
-address = "http://54.159.90.179/mediawiki/mediawiki-1.36.1/index.php/Main_Page"
-ssh = "ssh ec2-user@54.159.90.179"
-Infra created
+address = "http://34.226.196.34/mediawiki/mediawiki-1.36.1/index.php/Main_Page"
+ssh = "ssh ec2-user@34.226.196.34"
+Infrastructure created successfully using terraform apply command!!
 ```
 try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.1/index.php/Main_Page
 * Eg : http://54.159.90.179/mediawiki/mediawiki-1.36.1/index.php/Main_Page
