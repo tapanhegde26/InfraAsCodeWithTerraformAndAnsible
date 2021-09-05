@@ -36,17 +36,17 @@ Project is created with:
 * Ansible: 2.9
 * Terraform: 1.0.5
 
-## Operating System
+## Operating-System
 * Redhat 8
 
 ## Pre-requisite
-* Git needs to be installed in host machine
 * An AWS Account
 * An AWS CLI needs to be installed
 * Your AWS credentials. 
   * You can create a new Access Key on this page.https://console.aws.amazon.com/iam/home?#/security_credentials
 
 ## set-up
+* Git needs to be installed in host machine
 * Install Python3, Terraform, Ansible locally.
    * Python3 : https://linuxconcept.com/how-to-install-python-3-on-rhel-8-red-hat-enterprise-linux/
    * Terraform : https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
