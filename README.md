@@ -40,6 +40,7 @@ Project is created with:
 * Redhat 8
 
 ## Pre-requisite
+* Git needs to be installed in host machine
 * An AWS Account
 * An AWS CLI needs to be installed
 * Your AWS credentials. 
