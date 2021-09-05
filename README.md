@@ -45,7 +45,7 @@ Project is created with:
 * Your AWS credentials. 
   * You can create a new Access Key on this page.https://console.aws.amazon.com/iam/home?#/security_credentials
 
-## set-up
+## Set-up
 * Git needs to be installed in host machine
    * git : https://linuxconfig.org/install-git-in-linux-redhat-8
 * Install Python3, Terraform, Ansible locally.
@@ -57,6 +57,15 @@ Project is created with:
    * The easiest way to do so is by setting up the AWS CLI. 
       * https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
       * https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+* once aws-cli is installed in host machine, set up aws credentials using below command
+   ```
+   $ aws configure
+   ```
+   * This will ask for your AWS access key and AWS Secret as below
+      - AWS Access Key ID [None] : ******
+      - AWS Secret Access Key [None] : ******
+      - Default region name : [leave it none , press enter]
+      - Default output format : [leave it none, press enter]
 
 ## Usage
 * Files used in this project with their functionality listed
