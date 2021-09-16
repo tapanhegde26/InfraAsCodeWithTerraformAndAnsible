@@ -22,7 +22,7 @@ if [[ $operatingSystem == *"Ubuntu"* ]]; then
   sudo apt install php-intl -y
   sudo apt-get install -y php-mbstring
   sudo apt-get install -y php-xml
-elif [[ $operatingSystem == *"redhat"* ]]; then
+elif [[ $operatingSystem == *"Redhat"* ]]; then
   echo "****** Linux Operating system is 'Redhat' ******"
   sudo yum install wget -y
   sudo wget https://releases.wikimedia.org/mediawiki/1.36/mediawiki-1.36.1.tar.gz
