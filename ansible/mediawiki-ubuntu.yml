@@ -6,7 +6,7 @@
 
   tasks:
   - name: Install LAMP Packages on ubuntu
-    apt: name={{ item }} update_cache=no state=latest
+    apt: name={{ item }} update_cache=yes state=latest
     loop: [ 'apache2', 'mysql-server', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php']
 
   - name: Create document root
@@ -97,7 +97,7 @@
     copy: src=install_mediawiki.sh dest=/home/ubuntu mode=0777
 
   - name: Execute the script
-    command: sh /home/ubuntu/install_mediawiki.sh
+    command: bash /home/ubuntu/install_mediawiki.sh
 
   handlers:
    - name: Reload Apache
@@ -109,4 +109,3 @@
      service:
         name: apache2
         state: restarted
-
