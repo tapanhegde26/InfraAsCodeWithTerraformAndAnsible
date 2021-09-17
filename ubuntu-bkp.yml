@@ -1,0 +1,112 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+  - name: Install LAMP Packages on ubuntu
+    apt: name={{ item }} update_cache=yes state=latest
+    loop: [ 'apache2', 'mysql-server', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php']
+
+  - name: Create document root
+    file:
+      path: "/var/www/{{ http_host }}"
+      state: directory
+      owner: "{{ app_user }}"
+      mode: '0755'
+
+  - name: Set up Apache virtualhost
+    template:
+      src: "files/apache.conf.j2"
+      dest: "/etc/apache2/sites-available/{{ http_conf }}"
+    notify: Reload Apache
+
+
+  - name: Enable new site
+    shell: /usr/sbin/a2ensite {{ http_conf }}
+    notify: Reload Apache
+
+
+  - name: Disable default Apache site
+    shell: /usr/sbin/a2dissite 000-default.conf
+    when: disable_default
+    notify: Reload Apache
+
+  - name: Set up php ini
+    template:
+      src: "files/php.ini.j2"
+      dest: "/etc/php/7.4/apache2/"
+    notify: Reload Apache
+
+
+# MySQL Configuration
+  - name: Sets the root password
+    mysql_user:
+        name: root
+        password: "{{ mysql_root_password }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+
+  - name: Removes all anonymous user accounts
+    mysql_user:
+        name: ''
+        host_all: yes
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+  - name: Removes the MySQL test database
+    mysql_db:
+        name: test
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+  # UFW Configuration
+
+  - name: "UFW - Allow HTTP on port {{ http_port }}"
+    ufw:
+      rule: allow
+      port: "{{ http_port }}"
+      proto: tcp
+
+  # PHP Info Page
+  - name: Sets Up PHP Info Page
+    template:
+      src: "files/info.php.j2"
+      dest: "/var/www/{{ http_host }}/info.php"
+
+  - name: Create user
+    community.mysql.mysql_user:
+      name: 'wiki'
+      password: '{{ wiki_user_password }}'
+      login_host: 'localhost'
+      login_user: 'root'
+      login_password: '{{ mysql_root_password }}'
+      state: present
+
+  - name: Create a new database
+    mysql_db:
+      name: 'wikidatabase'
+      state: present
+      login_host: 'localhost'
+      login_user: 'root'
+      login_password: "{{ mysql_root_password }}"
+
+  - name: Transfer the script
+    copy: src=install_mediawiki.sh dest=/home/ubuntu mode=0777
+
+  - name: Execute the script
+    command: bash /home/ubuntu/install_mediawiki.sh
+
+  handlers:
+   - name: Reload Apache
+     service:
+        name: apache2
+        state: reloaded
+
+   - name: Restart Apache
+     service:
+        name: apache2
+        state: restarted
+

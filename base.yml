@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  become: true
+# Setup/install tasks.
+- include_tasks: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: ubuntu.yml
+  when: ansible_os_family == 'Debian'
