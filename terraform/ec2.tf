@@ -35,7 +35,7 @@ resource "aws_key_pair" "auth" {
 
 resource "aws_instance" "web" {
   instance_type = "t2.micro"
-  ami = "${data.aws_ami.redhat-linux-8.id}"
+  ami = "${data.aws_ami.ubuntu-linux-1804.id}"
 
   # The name of our SSH keypair
   key_name = "${var.key_name}"
