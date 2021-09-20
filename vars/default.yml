@@ -1,0 +1,14 @@
+---
+mysql_root_password: "password123"
+app_user: "ubuntu"
+redhat_user: "ec2-user"
+http_host: "ec2-3-82-129-10.compute-1.amazonaws.com"
+http_conf: "mediawiki.conf"
+http_port: "80"
+disable_default: true
+wiki_user_password: "mediawiki12345"
+fusioninventory__agent_packages:
+  - 'fusioninventory-agent'
+  - 'fusioninventory-agent-task-inventory'
+fusioninventory__repo_package: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+fusioninventory__repo_gpgkey: "https://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"

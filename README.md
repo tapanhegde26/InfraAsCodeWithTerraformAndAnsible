@@ -152,8 +152,3 @@ This project can be improved in below areas.
 * [install mediawiki on linux](https://www.linuxtechi.com/install-mediawiki-on-linux/)
 * [mediakwiki manual](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux)
   
-
-
-
-   
-
