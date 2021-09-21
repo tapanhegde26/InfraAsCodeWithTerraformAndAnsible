@@ -60,8 +60,8 @@ resource "aws_instance" "web" {
     }
     }
    provisioner "local-exec" {
-#    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu -i '${self.public_ip},' --private-key ${var.pvt_key} -e 'pub_key=${var.pub_key}' ~/InfraAsCodeWithTerraformAndAnsible/ansible/allDistros.yml --vault-password-file ~/InfraAsCodeWithTerraformAndAnsible/.vault"
-     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu -i '${self.public_ip},' --private-key ${var.pvt_key} -e 'pub_key=${var.pub_key}' ~/jenkins/workspace/terraform_ansible/ansible/allDistros.yml --vault-password-file ~/.vault"
+#    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ec2-user -i '${self.public_ip},' --private-key ${var.pvt_key} -e 'pub_key=${var.pub_key}' ~/InfraAsCodeWithTerraformAndAnsible/ansible/allDistros.yml"
+     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu -i '${self.public_ip},' --private-key ${var.pvt_key} -e 'pub_key=${var.pub_key}' ~/jenkins/workspace/terraform_ansible/ansible/allDistros.yml"
   }
 
 }
