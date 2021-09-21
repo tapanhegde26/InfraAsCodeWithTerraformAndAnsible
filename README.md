@@ -133,7 +133,9 @@ This project can be improved in below areas.
             ```
             ansible-playbook -i inventory allDistros.yml
             ```
-     Update : Now Ansible vault is integrated with gpg key to make it more secure. Earlier password was kept in .vault file and this file is committed in git repo (which is very bad practice). Now, gpg key is configured and it is encrypted and this encrypted key is used as ansible-vault password.
+    * Update 
+      * Now Ansible vault is integrated with gpg key to make it more secure. Earlier password was kept in .vault file and this file is committed in git repo (which is very bad practice). 
+      * Now, gpg key is configured and it is encrypted and this encrypted key is used as ansible-vault password.
      
     Reference : [Secrets with Ansible: Ansible Vault and GPG](https://benincosa.com/?p=3235)
 
@@ -146,11 +148,11 @@ This project can be improved in below areas.
 
 * For now this project is tested with RHEL-8 ami image, it can fine tuned to use other linux flavours like ubuntu, amazon linux, suse etc.
 
-    Update : 
+    * Update : 
         
-        Now this functionality is extended to both RedHat image and Ubuntu image. Refere allDistros.yml for references.
+        * Now this functionality is extended to both RedHat image and Ubuntu image. Refere allDistros.yml for references.
         
-        Next, I am planning to create automation in terraform files to pick proper image depending on condition.
+        * Next, I am planning to create automation in terraform files to pick proper image depending on condition.
   
 * mediawiki site is running on http protocol(not secure) by default, we can make necessary changes at httpd web server level to make it secure(https)
 
