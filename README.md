@@ -131,7 +131,7 @@ This project can be improved in below areas.
     * I am working to upgrade this project by using ansible vault to store db credentials in encrypted format [completed]
         * encrypted vars/default.yml file using anisble-vault. please find below command to execute ansible playbook using vault password file
             ```
-            ansible-playbook  mediawiki-successInstall-1draft.yml  -l server1 -u ec2-user --vault-password-file ~/.vault
+            ansible-playbook -i inventory allDistros.yml
             ```
      Update : Now Ansible vault is integrated with gpg key to make it more secure. Earlier password was kept in .vault file and this file is committed in git repo (which is very bad practice). Now, gpg key is configured and it is encrypted and this encrypted key is used as ansible-vault password.
      
@@ -145,8 +145,12 @@ This project can be improved in below areas.
 * For now this project is tested only for AWS cloud, it can be extended to other cloud providers like GCP, Azure, Digital Ocean etc
 
 * For now this project is tested with RHEL-8 ami image, it can fine tuned to use other linux flavours like ubuntu, amazon linux, suse etc.
-  Update : Now this functionality is extended to both RedHat image and Ubuntu image. Refere allDistros.yml for references.
-  Next, I am planning to create automation in terraform files to pick proper image depending on condition.
+
+    Update : 
+        
+        Now this functionality is extended to both RedHat image and Ubuntu image. Refere allDistros.yml for references.
+        
+        Next, I am planning to create automation in terraform files to pick proper image depending on condition.
   
 * mediawiki site is running on http protocol(not secure) by default, we can make necessary changes at httpd web server level to make it secure(https)
 
