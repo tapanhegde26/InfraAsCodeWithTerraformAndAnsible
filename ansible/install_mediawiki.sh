@@ -13,11 +13,11 @@ if [[ $operatingSystem == *"Ubuntu"* ]]; then
   sudo mkdir -p /var/www
   sudo mkdir -p /var/www/html
   sudo mkdir -p /var/www/html/mediawiki
-  sudo mv mediawiki-1.36.1 /var/www/html/mediawiki
+  sudo cp -r  mediawiki-1.36.1 /var/www/html/mediawiki
   sudo chown -R www-data:www-data /var/www/html/mediawiki
   sudo chmod -R 777 /var/www/html/mediawiki
-  #sudo a2ensite /etc/apache2/sites-available/mediawiki.conf
-  #sudo a2enmod rewrite
+  sudo a2ensite /etc/apache2/sites-available/ec2user.conf
+  sudo a2enmod rewrite
   sudo systemctl restart apache2
   sudo apt install php-intl -y
   sudo apt-get install -y php-mbstring

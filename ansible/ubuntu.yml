@@ -5,15 +5,18 @@
     - vars/default.yml
 
   tasks:
+  - name: Add php ppa repositories
+    apt_repository: repo='ppa:ondrej/php' state=present
+
   - name: Install LAMP Packages on ubuntu
-    apt: name={{ item }} update_cache=no state=latest
-    loop: [ 'apache2', 'mysql-server', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php']
+    apt: name={{ item }} update_cache=yes state=latest
+    loop: [ 'apache2', 'mysql-server', 'python3-pymysql', 'php7.4', 'php7.4-mysql', 'libapache2-mod-php']
 
   - name: Create document root
     file:
       path: "/var/www/{{ http_host }}"
       state: directory
-      owner: "{{ app_user }}"
+      owner: "{{ ubuntu_user }}"
       mode: '0755'
 
   - name: Set up Apache virtualhost
@@ -74,7 +77,7 @@
   - name: Sets Up PHP Info Page
     template:
       src: "files/info.php.j2"
-      dest: "/var/www/{{ http_host }}/info.php"
+      dest: "/var/www/html/info.php"
 
   - name: Create user
     community.mysql.mysql_user:
@@ -94,10 +97,10 @@
       login_password: "{{ mysql_root_password }}"
 
   - name: Transfer the script
-    copy: src=install_mediawiki_ubuntu.sh dest=/home/ubuntu mode=0777
+    copy: src=install_mediawiki.sh dest=/home/ubuntu mode=0777
 
   - name: Execute the script
-    command: sh /home/ubuntu/install_mediawiki_ubuntu.sh
+    command: bash /home/ubuntu/install_mediawiki.sh
 
   handlers:
    - name: Reload Apache
