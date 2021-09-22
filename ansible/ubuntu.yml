@@ -3,6 +3,9 @@
   become: true
   vars_files:
     - vars/default.yml
+  apt:
+    upgrade: yes
+    update_cache: yes
 
   tasks:
   - name: Add php ppa repositories
@@ -10,37 +13,38 @@
 
   - name: Install LAMP Packages on ubuntu
     apt: name={{ item }} update_cache=yes state=latest
-    loop: [ 'apache2', 'mysql-server', 'python3-pymysql', 'php7.4', 'php7.4-mysql', 'libapache2-mod-php']
-
-  - name: Create document root
-    file:
-      path: "/var/www/{{ http_host }}"
-      state: directory
-      owner: "{{ ubuntu_user }}"
-      mode: '0755'
-
-  - name: Set up Apache virtualhost
-    template:
-      src: "files/apache.conf.j2"
-      dest: "/etc/apache2/sites-available/{{ http_conf }}"
+    loop: [ 'apache2', 'mariadb-server', 'php', 'php-mysql','libapache2-mod-php','php-xml','php-mbstring','php-apcu','php-intl','imagemagick','inkscape','php-gd','php-cli','php-curl','php-bcmath','git']
     notify: Reload Apache
 
-
-  - name: Enable new site
-    shell: /usr/sbin/a2ensite {{ http_conf }}
-    notify: Reload Apache
-
-
-  - name: Disable default Apache site
-    shell: /usr/sbin/a2dissite 000-default.conf
-    when: disable_default
-    notify: Reload Apache
-
-  - name: Set up php ini
-    template:
-      src: "files/php.ini.j2"
-      dest: "/etc/php/7.4/apache2/"
-    notify: Reload Apache
+  # - name: Create document root
+  #   file:
+  #     path: "/var/www/{{ http_host }}"
+  #     state: directory
+  #     owner: "{{ ubuntu_user }}"
+  #     mode: '0755'
+  # 
+  # - name: Set up Apache virtualhost
+  #   template:
+  #     src: "files/apache.conf.j2"
+  #     dest: "/etc/apache2/sites-available/{{ http_conf }}"
+  #   notify: Reload Apache
+  # 
+  # 
+  # - name: Enable new site
+  #   shell: /usr/sbin/a2ensite {{ http_conf }}
+  #   notify: Reload Apache
+  # 
+  # 
+  # - name: Disable default Apache site
+  #   shell: /usr/sbin/a2dissite 000-default.conf
+  #   when: disable_default
+  #   notify: Reload Apache
+  # 
+  # - name: Set up php ini
+  #   template:
+  #     src: "files/php.ini.j2"
+  #     dest: "/etc/php/7.4/apache2/"
+  #   notify: Reload Apache
 
 
 # MySQL Configuration
@@ -65,19 +69,19 @@
         login_user: root
         login_password: "{{ mysql_root_password }}"
 
-  # UFW Configuration
-
-  - name: "UFW - Allow HTTP on port {{ http_port }}"
-    ufw:
-      rule: allow
-      port: "{{ http_port }}"
-      proto: tcp
-
-  # PHP Info Page
-  - name: Sets Up PHP Info Page
-    template:
-      src: "files/info.php.j2"
-      dest: "/var/www/html/info.php"
+  # # UFW Configuration
+  # 
+  # - name: "UFW - Allow HTTP on port {{ http_port }}"
+  #   ufw:
+  #     rule: allow
+  #     port: "{{ http_port }}"
+  #     proto: tcp
+  # 
+  # # PHP Info Page
+  # - name: Sets Up PHP Info Page
+  #   template:
+  #     src: "files/info.php.j2"
+  #     dest: "/var/www/html/info.php"
 
   - name: Create user
     community.mysql.mysql_user:
