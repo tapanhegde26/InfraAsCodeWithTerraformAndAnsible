@@ -1,4 +1,4 @@
-# InfrastructureAsCode With Terraform And Ansible
+# Infrastructure-As-Code With Terraform And Ansible
 In this repo, I tried to develop infrastructure on aws with help of terraform and then tried to achieve configuration management using ansible.
 
 ## Table of contents
@@ -38,6 +38,7 @@ Project is created with:
 
 ## Operating-System
 * Redhat 8
+* Ubuntu 20.04 LTS
 
 ## Pre-requisite
 * An AWS Account
@@ -78,6 +79,7 @@ Project is created with:
   * ansible/Files/info.php.j2 :- Template file for sample info.php
   * ansible/vars/default.yml :- contains variables, which references are used in main ansible yml file
   * ansible/ansible.cfg :- config file for ansible
+  * ansible/allDistros.yml :- yml file to install lamp stack on redhat/ubuntu image
   * terraform/aws.tf :- This file contains cloud provider details for terraform
   * terraform/ec2.tf :- This file contains details for ec2 instance creation
   * ansible/install_mediawiki.sh :- bash script to install mediawiki in created ec2 instance, this script is invoked in ansible playbook command
@@ -108,15 +110,15 @@ To run this project, execute below commands.
    * Here i am considering path for ssh keys would be /home/user/.ssh path, you can generate and keep ssh keys in any path and make sure you use same path while running terraform apply command
    * I am considering us-east-1 as default region, same has been set in createInfra.sh and destroyInfra.sh scripts. Please feel free to change it according to your feasibility.
 
-## output
+## Output
 When createInfra.sh executes successfully, you will get similar below message on console.
 ```
-address = "http://34.226.196.34/mediawiki/mediawiki-1.36.1/index.php/Main_Page"
+address = "http://ec2-54-175-133-129.compute-1.amazonaws.com/mediawiki/"
 ssh = "ssh ec2-user@34.226.196.34"
 Infrastructure created successfully using terraform apply command!!
 ```
-try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.1/index.php/Main_Page
-* Eg : http://54.159.90.179/mediawiki/mediawiki-1.36.1/index.php/Main_Page
+try to access above mediawiki url : http://[public-ip]/mediawiki/
+* Eg : http://ec2-54-175-133-129.compute-1.amazonaws.com/mediawiki/
 * you should see setup mediawiki page as below
     ![alt text](https://github.com/sheldon-cooper26/InfraAsCodeWithTerraformAndAnsible/blob/main/image.png?raw=true)
   
@@ -159,7 +161,7 @@ This project can be improved in below areas.
 
 ## Notes:
 
-* If you are using fresh machine and ansible is newly installed in that machine. Then while running ansible command you might face below error
+* If you are using fresh machine and ansible is newly installed in that machine, then while running ansible command you might face below error
      * "ERROR! couldn't resolve module/action 'community.mysql.mysql_user'. This often indicates a misspelling, missing collection, or incorrect module path."
      * To resolve this error, you need to install community.mysql from ansible-galaxy collection
     
@@ -174,7 +176,8 @@ This project can be improved in below areas.
 * [hasicorp tutorials](https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started)
 * [Ansible documentation](https://docs.ansible.com/ansible/2.3/list_of_all_modules.html)
 * [install mediawiki on linux](https://www.linuxtechi.com/install-mediawiki-on-linux/)
-* [mediakwiki manual](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux)
+* [mediakwiki manual - RedHat](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux)
+* [mediawiki manual - ubuntu](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Debian_or_Ubuntu)
   
 
 

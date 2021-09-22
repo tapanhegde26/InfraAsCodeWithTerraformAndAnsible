@@ -1,5 +1,5 @@
 output "address" {
-  value = "http://${aws_instance.web.public_ip}/mediawiki/mediawiki-1.36.1/index.php/Main_Page"
+  value = "http://${aws_instance.web.public_ip}/mediawiki/"
 }
 
 output "ssh" {
