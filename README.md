@@ -78,6 +78,7 @@ Project is created with:
   * ansible/Files/info.php.j2 :- Template file for sample info.php
   * ansible/vars/default.yml :- contains variables, which references are used in main ansible yml file
   * ansible/ansible.cfg :- config file for ansible
+  * ansible/allDistros.yml :- yml file to install lamp stack on redhat/ubuntu image
   * terraform/aws.tf :- This file contains cloud provider details for terraform
   * terraform/ec2.tf :- This file contains details for ec2 instance creation
   * ansible/install_mediawiki.sh :- bash script to install mediawiki in created ec2 instance, this script is invoked in ansible playbook command
@@ -174,7 +175,8 @@ This project can be improved in below areas.
 * [hasicorp tutorials](https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started)
 * [Ansible documentation](https://docs.ansible.com/ansible/2.3/list_of_all_modules.html)
 * [install mediawiki on linux](https://www.linuxtechi.com/install-mediawiki-on-linux/)
-* [mediakwiki manual](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux)
+* [mediakwiki manual - RedHat](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Red_Hat_Linux)
+* [mediawiki manual - ubuntu](https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Debian_or_Ubuntu)
   
 
 
