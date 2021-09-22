@@ -111,12 +111,12 @@ To run this project, execute below commands.
 ## output
 When createInfra.sh executes successfully, you will get similar below message on console.
 ```
-address = "http://34.226.196.34/mediawiki/mediawiki-1.36.1/index.php/Main_Page"
+address = "http://ec2-54-175-133-129.compute-1.amazonaws.com/mediawiki/"
 ssh = "ssh ec2-user@34.226.196.34"
 Infrastructure created successfully using terraform apply command!!
 ```
-try to access above mediawiki url : http://[public-ip]/mediawiki/mediawiki-1.36.1/index.php/Main_Page
-* Eg : http://54.159.90.179/mediawiki/mediawiki-1.36.1/index.php/Main_Page
+try to access above mediawiki url : http://[public-ip]/mediawiki/
+* Eg : http://ec2-54-175-133-129.compute-1.amazonaws.com/mediawiki/
 * you should see setup mediawiki page as below
     ![alt text](https://github.com/sheldon-cooper26/InfraAsCodeWithTerraformAndAnsible/blob/main/image.png?raw=true)
   
