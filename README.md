@@ -143,6 +143,7 @@ This project can be improved in below areas.
       * Now Ansible vault is integrated with hashicorp vault to make it more secure. Earlier password was kept in .vault file and this file is committed in git repo (which is very bad practice). 
       * Now Ansible vault password is read from .py script
       * ansible playbook command : $ ansible-playbook -i inventory allDistros.yml --vault-password-file ~/InfraAsCodeWithTerraformAndAnsible/readPasswd.py
+      * Complete details can be found in this link. [LearnWithTapan](https://learnwithtapan.blogspot.com/2021/09/secure-your-ansible-vault-password.html)
      
 
 * Terraform file declaration :
