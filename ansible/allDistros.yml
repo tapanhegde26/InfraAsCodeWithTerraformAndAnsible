@@ -7,7 +7,59 @@
   tasks:
   - name: Install LAMP Packages on ubuntu
     apt: name={{ item }} update_cache=yes state=latest
-    loop: [ 'apache2', 'mysql-server', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php']
+    loop: [ 'apache2', 'mariadb-server', 'php', 'php-mysql','python3-pymysql','libapache2-mod-php','php-xml','php-mbstring','php-apcu','php-intl','imagemagick','inkscape','php-gd','php-cli','php-curl','php-bcmath','git']
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+# MySQL Configuration
+  - name: Sets the root password ubuntu
+    mysql_user:
+        name: root
+        password: "{{ mysql_root_password }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+  - name: Removes all anonymous user accounts ubuntu
+    mysql_user:
+        name: ''
+        host_all: yes
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+  - name: Removes the MySQL test database ubuntu
+    mysql_db:
+        name: test
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+  - name: Create user ubuntu
+    community.mysql.mysql_user:
+      name: 'wiki'
+      password: '{{ wiki_user_password }}'
+      login_host: 'localhost'
+      login_user: 'root'
+      login_password: '{{ mysql_root_password }}'
+      state: present
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+  - name: Create a new database ubuntu
+    mysql_db:
+      name: 'wikidatabase'
+      state: present
+      login_host: 'localhost'
+      login_user: 'root'
+      login_password: "{{ mysql_root_password }}"
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+  - name: Transfer the script ubuntu
+    copy: src=install_mediawiki.sh dest=/home/ubuntu mode=0777
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+  - name: Execute the script ubuntu
+    command: bash /home/ubuntu/install_mediawiki.sh
     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
   - name: Install LAMP Packages on redhat
@@ -22,33 +74,6 @@
       owner: "{{ redhat_user }}"
       mode: '0755'
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
-
-  - name: Set up Apache virtualhost ubuntu
-    template:
-      src: "files/apache.conf.j2"
-      dest: "/etc/apache2/sites-available/{{ http_conf }}"
-    notify: Reload Apache
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-
-  - name: Enable new site ubuntu
-    shell: /usr/sbin/a2ensite {{ http_conf }}
-    notify: Reload Apache
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-
-  - name: Disable default Apache site ubuntu
-    shell: /usr/sbin/a2dissite 000-default.conf
-   # when: disable_default
-    notify: Reload Apache
-    when: disable_default and ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-  - name: Set up php ini ubuntu
-    template:
-      src: "files/php.ini.j2"
-      dest: "/etc/php/7.4/apache2/"
-    notify: Reload Apache
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
   - name: install firewalld redhat
     dnf:
@@ -122,50 +147,6 @@
       masked: no
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
 
-
-# MySQL Configuration
-  - name: Sets the root password ubuntu
-    mysql_user:
-        name: root
-        password: "{{ mysql_root_password }}"
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-  - name: Removes all anonymous user accounts ubuntu
-    mysql_user:
-        name: ''
-        host_all: yes
-        state: absent
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-  - name: Removes the MySQL test database ubuntu
-    mysql_db:
-        name: test
-        state: absent
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-
-  # UFW Configuration
-
-  - name: "UFW - Allow HTTP on port {{ http_port }} ubuntu"
-    ufw:
-      rule: allow
-      port: "{{ http_port }}"
-      proto: tcp
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-  # PHP Info Page
-  - name: Sets Up PHP Info Page ubuntu
-    template:
-      src: "files/info.php.j2"
-      dest: "/var/www/html/info.php"
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-
   - name: Install python3-PyMySQL library redhat
     dnf:
         name: python3-PyMySQL
@@ -181,7 +162,6 @@
         password: '{{ mysql_root_password }}'
         state: present
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
-
 
   - name: Import EPEL GPG key redhat
     rpm_key:
@@ -249,16 +229,6 @@
     command: sh /home/ec2-user/install_module.sh
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
 
-  - name: Create user ubuntu
-    community.mysql.mysql_user:
-      name: 'wiki'
-      password: '{{ wiki_user_password }}'
-      login_host: 'localhost'
-      login_user: 'root'
-      login_password: '{{ mysql_root_password }}'
-      state: present
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
   - name: Create user redhat
     community.mysql.mysql_user:
       name: 'wiki'
@@ -269,15 +239,6 @@
       state: present
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
 
-  - name: Create a new database ubuntu
-    mysql_db:
-      name: 'wikidatabase'
-      state: present
-      login_host: 'localhost'
-      login_user: 'root'
-      login_password: "{{ mysql_root_password }}"
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
   - name: Create a new database redhat
     mysql_db:
       name: 'wikidatabase'
@@ -286,14 +247,6 @@
       login_user: 'root'
       login_password: "{{ mysql_root_password }}"
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
-
-  - name: Transfer the script ubuntu
-    copy: src=install_mediawiki.sh dest=/home/ubuntu mode=0777
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-  - name: Execute the script ubuntu
-    command: bash /home/ubuntu/install_mediawiki.sh
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
   - name: Transfer the script redhat
     copy: src=install_mediawiki.sh dest=/home/ec2-user mode=0777

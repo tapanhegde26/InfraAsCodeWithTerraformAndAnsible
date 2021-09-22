@@ -1,5 +1,5 @@
-ec2-35-153-18-180.compute-1.amazonaws.com  ansible_user=ubuntu
-#ec2-54-172-1-198.compute-1.amazonaws.com  ansible_user=ec2-user
+ec2-18-212-180-131.compute-1.amazonaws.com  ansible_user=ubuntu
+ec2-54-175-133-129.compute-1.amazonaws.com  ansible_user=ec2-user
 
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
