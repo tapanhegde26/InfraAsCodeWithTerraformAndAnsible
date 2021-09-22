@@ -98,7 +98,6 @@ To run this project, execute below commands.
   * go to directory 'InfraAsCodeWithTerraformAndAnsible'
     ```
       $ cd InfraAsCodeWithTerraformAndAnsible
-  
     ```
   * execute createInfra script
     ```
@@ -166,8 +165,7 @@ This project can be improved in below areas.
      * To resolve this error, you need to install community.mysql from ansible-galaxy collection
     
     ```
-    $ ansible-galaxy collection install community.mysql
-    
+    $ ansible-galaxy collection install community.mysql    
     ```
 
 
