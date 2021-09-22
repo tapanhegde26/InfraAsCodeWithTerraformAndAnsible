@@ -3,17 +3,16 @@
   become: true
   vars_files:
     - vars/default.yml
-  apt:
-    upgrade: yes
-    update_cache: yes
-
+      #  apt:
+      #upgrade: yes
+      # update_cache: yes
   tasks:
   - name: Add php ppa repositories
     apt_repository: repo='ppa:ondrej/php' state=present
 
   - name: Install LAMP Packages on ubuntu
     apt: name={{ item }} update_cache=yes state=latest
-    loop: [ 'apache2', 'mariadb-server', 'php', 'php-mysql','libapache2-mod-php','php-xml','php-mbstring','php-apcu','php-intl','imagemagick','inkscape','php-gd','php-cli','php-curl','php-bcmath','git']
+    loop: [ 'apache2', 'mariadb-server', 'php', 'php-mysql','python3-pymysql','libapache2-mod-php','php-xml','php-mbstring','php-apcu','php-intl','imagemagick','inkscape','php-gd','php-cli','php-curl','php-bcmath','git']
     notify: Reload Apache
 
   # - name: Create document root

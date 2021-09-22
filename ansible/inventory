@@ -1,4 +1,4 @@
-ec2-3-80-219-240.compute-1.amazonaws.com  ansible_user=ubuntu
+ec2-35-153-18-180.compute-1.amazonaws.com  ansible_user=ubuntu
 #ec2-54-172-1-198.compute-1.amazonaws.com  ansible_user=ec2-user
 
 [all:vars]
