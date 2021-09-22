@@ -16,18 +16,7 @@ if [[ $operatingSystem == *"Ubuntu"* ]]; then
   sudo phpenmod mbstring
   sudo phpenmod xml
   sudo systemctl restart apache2.service
-#   sudo mkdir -p /var/www
-#   sudo mkdir -p /var/www/html
-#   sudo mkdir -p /var/www/html/mediawiki
-#   sudo cp -r  mediawiki-1.36.1 /var/www/html/mediawiki
-#   sudo chown -R www-data:www-data /var/www/html/mediawiki
-#   sudo chmod -R 777 /var/www/html/mediawiki
-#   sudo a2ensite /etc/apache2/sites-available/ec2user.conf
-#   sudo a2enmod rewrite
-#   sudo systemctl restart apache2
-#   sudo apt install php-intl -y
-#   sudo apt-get install -y php-mbstring
-#   sudo apt-get install -y php-xml
+
 elif [[ $operatingSystem == *"Red Hat"* ]]; then
   echo "****** Linux Operating system is 'Redhat' ******"
   sudo yum install wget -y
@@ -37,9 +26,6 @@ elif [[ $operatingSystem == *"Red Hat"* ]]; then
   sudo mkdir /var/lib/mediawiki
   sudo mv mediawiki-*/* /var/lib/mediawiki
   sudo ln -s /var/lib/mediawiki /var/www/html/mediawiki
-  #sudo mv mediawiki-* /var/www/html/mediawiki/
-  #sudo chown -R apache:apache /var/www/html/mediawiki/
-  #sudo chmod 755 /var/www/html/mediawiki/
   sudo restorecon -FR /var/www/html/mediawiki/
   sudo dnf install php-intl -y
 elif [[ $operatingSystem == *"kali"* ]]; then
