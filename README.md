@@ -144,7 +144,6 @@ This project can be improved in below areas.
       * Now Ansible vault password is read from .py script
       * ansible playbook command : $ ansible-playbook -i inventory allDistros.yml --vault-password-file ~/InfraAsCodeWithTerraformAndAnsible/readPasswd.py
      
-    Reference : [Secrets with Ansible: Ansible Vault and GPG](https://benincosa.com/?p=3235)
 
 * Terraform file declaration :
     * Modules can be created and these module templates can be used in main.tf which is used ec2-instance creation.
