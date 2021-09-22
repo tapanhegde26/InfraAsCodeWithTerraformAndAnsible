@@ -1,4 +1,4 @@
-# InfrastructureAsCode With Terraform And Ansible
+# Infrastructure-As-Code With Terraform And Ansible
 In this repo, I tried to develop infrastructure on aws with help of terraform and then tried to achieve configuration management using ansible.
 
 ## Table of contents
