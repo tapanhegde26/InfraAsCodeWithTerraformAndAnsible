@@ -38,6 +38,7 @@ Project is created with:
 
 ## Operating-System
 * Redhat 8
+* Ubuntu 20.04 LTS
 
 ## Pre-requisite
 * An AWS Account
