@@ -110,7 +110,7 @@ To run this project, execute below commands.
    * Here i am considering path for ssh keys would be /home/user/.ssh path, you can generate and keep ssh keys in any path and make sure you use same path while running terraform apply command
    * I am considering us-east-1 as default region, same has been set in createInfra.sh and destroyInfra.sh scripts. Please feel free to change it according to your feasibility.
 
-## output
+## Output
 When createInfra.sh executes successfully, you will get similar below message on console.
 ```
 address = "http://ec2-54-175-133-129.compute-1.amazonaws.com/mediawiki/"
