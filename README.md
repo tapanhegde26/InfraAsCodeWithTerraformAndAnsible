@@ -157,6 +157,17 @@ This project can be improved in below areas.
   
 * mediawiki site is running on http protocol(not secure) by default, we can make necessary changes at httpd web server level to make it secure(https)
 
+## Notes:
+
+* If you are using fresh machine and ansible is newly installed in that machine. Then while running ansible command you might face below error
+     * "ERROR! couldn't resolve module/action 'community.mysql.mysql_user'. This often indicates a misspelling, missing collection, or incorrect module path."
+     * To resolve this error, you need to install community.mysql from ansible-galaxy collection
+    
+    ```
+    $ ansible-galaxy collection install community.mysql
+    
+    ```
+
 
 ## References
 * [how to use ansible with terraform on Digital ocean](https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management)
