@@ -35,6 +35,7 @@ Project is created with:
 * AWS
 * Ansible: 2.9.25
 * Terraform: 1.0.5
+* Hashicorp vault
 
 ## Operating-System
 * Redhat 8
@@ -72,6 +73,9 @@ Project is created with:
       - Default output format : [leave it none, press enter]
 * Generate ssh keys for your host machine and save it under path '/home/[user]/.ssh'
    * [Link to generate ssh keys](https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-rhel-8/)
+* Set up hashicorp vault in your host machine which is used to store ansible-vault password.
+   * [Hashicorp vault installation](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started)
+   * [Vault - secret creation](https://learn.hashicorp.com/tutorials/vault/getting-started-first-secret?in=vault/getting-started)
 
 ## Usage
 * Files used in this project with their functionality listed
@@ -136,8 +140,9 @@ This project can be improved in below areas.
             ansible-playbook -i inventory allDistros.yml
             ```
     * Update 
-      * Now Ansible vault is integrated with gpg key to make it more secure. Earlier password was kept in .vault file and this file is committed in git repo (which is very bad practice). 
-      * Now, gpg key is configured and it is encrypted and this encrypted key is used as ansible-vault password.
+      * Now Ansible vault is integrated with hashicorp vault to make it more secure. Earlier password was kept in .vault file and this file is committed in git repo (which is very bad practice). 
+      * Now Ansible vault password is read from .py script
+      * ansible playbook command : $ ansible-playbook -i inventory allDistros.yml --vault-password-file ~/InfraAsCodeWithTerraformAndAnsible/readPasswd.py
      
     Reference : [Secrets with Ansible: Ansible Vault and GPG](https://benincosa.com/?p=3235)
 
