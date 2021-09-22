@@ -55,6 +55,7 @@ Project is created with:
       * [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
    * Ansible : Install ansible on host machine
       * [Ansible installation](https://www.decodingdevops.com/how-to-install-ansible-on-rhel-8/)
+      * [ubuntu ansible installation](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04)
 * Set up AWS credentials in ~/.aws/credentials.
    * The easiest way to do so is by setting up the AWS CLI. 
       * [Install CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
