@@ -160,7 +160,7 @@ This project can be improved in below areas.
 
 ## Notes:
 
-* If you are using fresh machine and ansible is newly installed in that machine. Then while running ansible command you might face below error
+* If you are using fresh machine and ansible is newly installed in that machine, then while running ansible command you might face below error
      * "ERROR! couldn't resolve module/action 'community.mysql.mysql_user'. This often indicates a misspelling, missing collection, or incorrect module path."
      * To resolve this error, you need to install community.mysql from ansible-galaxy collection
     
