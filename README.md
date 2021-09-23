@@ -144,6 +144,15 @@ This project can be improved in below areas.
       * Now Ansible vault password is read from .py script
       * ansible playbook command : $ ansible-playbook -i inventory allDistros.yml --vault-password-file ~/InfraAsCodeWithTerraformAndAnsible/readPasswd.py
       * Complete details can be found in this link. [Learn-With-Tapan](https://medium.com/@hegdetapan2609/secure-your-ansible-vault-password-using-hashicorp-vault-and-python-script-afe2f7fb282a)
+      * we can run hashicorp vault in remote machine and can get secrets values from remote server. For this we need to enable VAULT_ADDR and VAULT_TOKEN value as below
+      ```
+      export VAULT_ADDR='http://172.31.87.28:8200' [ http://< private ip of remote server>:8200 ]
+      export VAULT_TOKEN="**********" [ root-token value ]
+      ```
+      * we need to start vault server in remote machine as below.
+      ```
+      vault server -dev -dev-listen-address="172.31.87.28:8200" [ -dev-listen-address = 'private-ip:8200' ]
+      ```
      
 
 * Terraform file declaration :
