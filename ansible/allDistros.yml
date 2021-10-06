@@ -125,7 +125,7 @@
     template:
       src: "files/httpd.conf.j2"
       dest: "/etc/httpd/conf/{{ http_conf }}"
-    notify: Reload Apache
+    notify: Reload httpd
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
 
   - name: Set up Apache virtualhost redhat
@@ -261,11 +261,22 @@
      service:
         name: apache2
         state: reloaded
-     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
    - name: Restart Apache
      service:
         name: apache2
         state: restarted
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+     
+   - name: Reload httpd
+     service:
+        name: httpd
+        state: reloaded
      when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
 
+   - name: Restart httpd
+     service:
+        name: httpd
+        state: restarted
+     when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'

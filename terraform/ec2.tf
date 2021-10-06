@@ -45,7 +45,7 @@ resource "aws_instance" "web" {
     }
     }
    provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ec2-user -i '${self.public_ip},' --private-key ${var.pvt_key} -e 'pub_key=${var.pub_key}' ~/InfraAsCodeWithTerraformAndAnsible/ansible/allDistros.yml --vault-password-file ~/InfraAsCodeWithTerraformAndAnsible/readPasswd.py"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ec2-user -i '${self.public_ip},' --private-key ${var.pvt_key} -e 'pub_key=${var.pub_key}' ~/cobalt-try-out/InfraAsCodeWithTerraformAndAnsible/ansible/allDistros.yml --vault-password-file ~/cobalt-try-out/InfraAsCodeWithTerraformAndAnsible/readPasswd.py"
   }
 
 }
